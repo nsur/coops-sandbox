@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <Header></Header>
+    <main>
+      <router-link :to="{ name: 'widgets', params: { customer: 'a' } }"
+        >Customer A</router-link
+      >
+      <br />
+      <router-link :to="{ name: 'widgets', params: { customer: 'b' } }"
+        >Customer B</router-link
+      >
+    </main>
+    <Footer></Footer>
+  </div>
+</template>
+
+<script>
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
+
+export default {
+  name: "CustomersList",
+  components: {
+    Header,
+    Footer,
+  },
+};
+</script>

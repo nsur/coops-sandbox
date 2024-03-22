@@ -36,8 +36,8 @@ export default {
   data() {
     return {
       widgetTitle:
-        "Customer " +
-        this.customer.toUpperCase() +
+        this.customer.charAt(0).toUpperCase() +
+        this.customer.slice(1) +
         " - Widget " +
         this.widgetId,
     };
@@ -45,7 +45,7 @@ export default {
   computed: {
     mainColor() {
       let mainColor = "blue";
-      if (this.customer === "a") {
+      if (this.customer === "abba") {
         mainColor = "green";
       } else {
         mainColor = "red";

@@ -34,13 +34,16 @@ export default {
   },
   data() {
     return {
-      customerName: "Customer " + this.customer.toUpperCase() + " Widgets",
+      customerName:
+        this.customer.charAt(0).toUpperCase() +
+        this.customer.slice(1) +
+        " Widgets",
     };
   },
   computed: {
     mainColor() {
       let mainColor = "blue";
-      if (this.customer === "a") {
+      if (this.customer === "abba") {
         mainColor = "green";
       } else {
         mainColor = "red";

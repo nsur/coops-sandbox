@@ -2,12 +2,12 @@
   <div>
     <Header></Header>
     <main>
-      <router-link :to="{ name: 'widgets', params: { customer: 'a' } }"
-        >Customer A</router-link
+      <router-link :to="{ name: 'widgets', params: { customer: 'abba' } }"
+        >Customer Abba</router-link
       >
       <br />
-      <router-link :to="{ name: 'widgets', params: { customer: 'b' } }"
-        >Customer B</router-link
+      <router-link :to="{ name: 'widgets', params: { customer: 'boneym' } }"
+        >Customer BoneyM</router-link
       >
     </main>
     <Footer></Footer>

@@ -2,6 +2,8 @@
   <div class="widget">
     <h3 v-text="title"></h3>
     <p>Widget Two</p>
+    <img v-if="dataReceived" :src="imageUrl" alt="Cat Image" class="cat" />
+    <p v-else>Loading...</p>
   </div>
 </template>
 
@@ -18,6 +20,35 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      dataReceived: false,
+      imageUrl: null,
+    };
+  },
+  mounted() {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+      "x-api-key": "DEMO-API-KEY",
+    });
+
+    var requestOptions = {
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&breed_id=ocic",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        this.dataReceived = true;
+        this.imageUrl = result[0].url;
+      })
+      .catch((error) => console.log("error", error));
+  },
 };
 </script>
 
@@ -29,5 +60,11 @@ export default {
   color: #fff;
   font-size: 20px;
   padding: 20px;
+}
+
+.cat {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }
 </style>

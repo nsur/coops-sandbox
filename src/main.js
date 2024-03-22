@@ -6,11 +6,17 @@ import CustomersList from "./pages/CustomersList.vue";
 import WidgetsList from "./pages/WidgetsList.vue";
 import WidgetPage from "./pages/WidgetPage.vue";
 
+const base = import.meta.env.BASE_URL;
 const routes = [
-  { path: "/", name: "customers", component: CustomersList },
-  { path: "/:customer", name: "widgets", component: WidgetsList, props: true },
+  { path: base, name: "customers", component: CustomersList },
   {
-    path: "/:customer/widget/:widgetId",
+    path: base + ":customer",
+    name: "widgets",
+    component: WidgetsList,
+    props: true,
+  },
+  {
+    path: base + ":customer/widget/:widgetId",
     name: "widget",
     component: WidgetPage,
     props: true,
